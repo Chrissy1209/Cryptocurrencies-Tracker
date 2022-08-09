@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { StyleSheet, ActionSheetIOS, Text, View, FlatList, SafeAreaView, ActivityIndicator } from 'react-native';
 import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
+
 // eslint-disable-next-line import/no-unresolved, import/extensions
 import renderItem from './components/item';
 
@@ -10,7 +11,7 @@ const renderEmpty = React.memo(() => (
   </View>
 ))
 
-export default function App() {
+const App = () => {
   const perPage = 25
   const [coins, setCoins] = useState<object[]>([])
   const [order, setOrder] = useState('market_cap_desc')
@@ -164,6 +165,7 @@ export default function App() {
     </SafeAreaView>
   );
 }
+export default App;
 
 const styles = StyleSheet.create({
   container: {
