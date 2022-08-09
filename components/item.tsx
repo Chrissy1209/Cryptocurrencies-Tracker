@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ListRenderItem } from 'react-native';
 
 const handleVolume = (e: number) => {
   if (e > 1_000_000_000_000) return `${Math.floor(e / 1_000_000_000_000)} T`
@@ -18,7 +18,7 @@ type test = {
   current_price: number,
   total_volume: number
 }
-const renderItem = (item: any) => (
+const renderItem: ListRenderItem<object> | null = (item: any) => (
   <View style={styles.listContainer}>
     <View style={styles.coinImage}>
       <Image style={styles.Image} source={{ uri: item.item.image }} />
