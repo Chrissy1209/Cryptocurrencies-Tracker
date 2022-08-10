@@ -23,7 +23,6 @@ const App = () => {
   const [toggle, setToggle] = useState(true)
 
   useEffect(() => {
-    console.log(`------------page = ${page}---------------`)
     getCoinsAPI(false, order, page)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [toggle]);
@@ -35,7 +34,6 @@ const App = () => {
       fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=${ord}&per_page=${perPage}&page=${p}`)
         .then((response) => response.json())
         .then((myList: object[]) => {
-          // console.log(myList.map((item) => item.symbol))
           if (myList.length < 25) setEnableLoad(false)
 
           if (refresh) setCoins(myList)
@@ -56,6 +54,7 @@ const App = () => {
     const Myname = `sort-${ord}`
     return <FontAwesome5 name={Myname} size={14} color="black" />
   }, [])
+
   const renderFooter = useCallback(() => (
     myLoading && enableLoad ? (
       <View style={styles.footer}>
@@ -71,6 +70,7 @@ const App = () => {
     setPage(1)
     getCoinsAPI(true, order, 1)
   }, [order, getCoinsAPI])
+
   const handleLoad = useCallback(() => {
     setMyLoading(true)
     if (enableLoad && !myLoading) {
@@ -78,6 +78,7 @@ const App = () => {
       setPage(page + 1)
     }
   }, [enableLoad, myLoading, toggle, page])
+
   const handleOrder = useCallback((ord) => {
     setCoins([])
     setOrder(ord)
@@ -85,10 +86,12 @@ const App = () => {
     setPage(1)
     getCoinsAPI(true, ord, 1)
   }, [getCoinsAPI])
+
   const handleColor = useCallback(() => {
     const list = ['None', 'id_asc', 'id_desc', 'volume_desc', 'volume_asc', 'market_cap_desc', 'market_cap_asc']
     return list.indexOf(order)
   }, [order])
+
   const handleOnPress = useCallback(() => {
     ActionSheetIOS.showActionSheetWithOptions(
       {
