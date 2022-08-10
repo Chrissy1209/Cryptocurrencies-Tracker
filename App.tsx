@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { StyleSheet, ActionSheetIOS, Text, View, FlatList, SafeAreaView, ActivityIndicator } from 'react-native';
 import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
 
-// eslint-disable-next-line import/no-unresolved, import/extensions
+// eslint-disable-next-line import/no-unresolved
 import renderItem from './components/item';
 
 const renderEmpty = React.memo(() => (
